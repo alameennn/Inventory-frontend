@@ -1,0 +1,283 @@
+/* reset */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background: #f6f7fb; color: #222; }
+
+/* compact header (no large card) */
+.header-compact {
+  padding: 12px 18px;
+  margin: 10px 18px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* controls aligned to right */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-input {
+  padding: 8px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+/* small Add button */
+.add-small {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-small:hover { opacity: 0.95; }
+
+/* product table - simple */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 18px;
+  background: #fff;
+}
+
+.product-table th, .product-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.product-table th { background: #fafbfd; font-weight: 600; }
+
+.product-table img { border-radius: 4px; }
+
+/* actions: inline and compact */
+.actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.actions button {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 0.86rem;
+}
+
+.delete-btn {
+  color: #b70000;
+  border-color: #f1cfcf;
+  background: #fff3f3;
+}
+
+/* status badges */
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+.in-stock { background: #eaffef; color: #1e7e34; border: 1px solid #c8f0d3; }
+.out-of-stock { background: #fff0f0; color: #c82333; border: 1px solid #f4cfcf; }
+
+/* modal (compact) */
+.modal { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.35); }
+.modal-content { background:#fff; padding:16px; border-radius:8px; width:320px; }
+.modal-content h3 { margin-bottom:8px; font-size:1rem; }
+.modal-content input, .modal-content select {
+  width:100%; padding:8px; margin-bottom:8px; border:1px solid #ddd; border-radius:6px;
+}
+.modal-buttons { display:flex; gap:8px; justify-content:flex-end; }
+.modal-buttons button { padding:8px 10px; border-radius:6px; border:none; cursor:pointer; }
+.modal-buttons button[type="submit"] { background:#1976d2; color:#fff; }
+.modal-buttons button[type="button"] { background:#eee; }
+
+/* responsive */
+@media (max-width: 700px) {
+  .header-row { flex-direction: column; align-items: stretch; gap:8px; }
+  .search-input { width:100%; }
+}
+/* APP LAYOUT */
+.app-shell {
+  min-height: 100vh;
+}
+
+/* main area keeps table full width but gives padding so sidebar doesn't overlap content too much */
+.main-layout {
+  position: relative;
+  padding: 12px 18px;
+  display: block;
+}
+
+/* table area uses full width; sidebar sits over it */
+.table-area {
+  max-width: 100%;
+}
+
+/* HISTORY SIDEBAR (fixed right) */
+.history-sidebar {
+  position: fixed;
+  right: 0;
+  top: 72px;            /* adjust if your header is taller; keeps under header */
+  width: 360px;         /* width of sidebar */
+  max-width: 92%;
+  height: calc(100vh - 80px);
+  background: #ffffff;
+  box-shadow: -6px 0 18px rgba(0,0,0,0.08);
+  border-left: 1px solid #eef0f3;
+  padding: 14px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(0);
+  transition: transform 200ms ease;
+}
+
+/* header inside sidebar */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.history-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+/* body scroll */
+.history-body {
+  overflow-y: auto;
+  padding-right: 6px;
+  flex: 1;
+}
+
+/* product title */
+.product-name {
+  margin: 0 0 8px 0;
+  font-size: 0.98rem;
+  color: #222;
+}
+
+/* list */
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  padding: 8px;
+  border-radius: 8px;
+  background: #fbfcfe;
+  border: 1px solid #f1f4f8;
+  font-size: 0.9rem;
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.history-dates .date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.history-qty { text-align: right; font-weight: 600; }
+.history-qty .old { font-weight: 500; font-size: 0.85rem; color:#666; }
+.history-qty .new { font-size: 0.95rem; color:#111; }
+
+/* no-history */
+.no-history {
+  color: #666;
+  font-size: 0.95rem;
+  padding: 6px 0;
+}
+
+/* responsive: on very small screens, make sidebar full-screen drawer */
+@media (max-width: 720px) {
+  .history-sidebar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    border-left: none;
+  }
+}
+/* modal visibility fix & small adjustments */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.36);
+  z-index: 9999; /* make sure it sits above everything */
+}
+
+.modal-content {
+  width: 340px;
+  max-width: calc(100% - 40px);
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* ensure inputs inside modal are visible */
+.modal-content input,
+.modal-content select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* accessible focus */
+.modal-content input:focus,
+.modal-content select:focus,
+.search-input:focus,
+.add-small:focus {
+  outline: 2px solid rgba(0,123,255,0.18);
+  outline-offset: 2px;
+}
+
+/* Add-small button slight tweak */
+.add-small { position: relative; z-index: 1; }

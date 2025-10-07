@@ -9,13 +9,13 @@ const ImportExportButtons = ({ fetchProducts }) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    await axios.post("/api/products/import", formData);
+    await axios.post("https://inventory-backend-xiod.onrender.com/api/products/import", formData);
     fetchProducts();
     alert("Import successful!");
   };
 
   const handleExport = async () => {
-    const res = await axios.get("/api/products/export", { responseType: "blob" });
+    const res = await axios.get("https://inventory-backend-xiod.onrender.com/api/products/export", { responseType: "blob" });
     const url = window.URL.createObjectURL(new Blob([res.data]));
     const link = document.createElement("a");
     link.href = url;

@@ -10,7 +10,7 @@ const App = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const fetchProducts = async () => {
-    const res = await axios.get("/api/products");
+    const res = await axios.get("https://inventory-backend-xiod.onrender.com/api/products");
     setProducts(res.data);
   };
 

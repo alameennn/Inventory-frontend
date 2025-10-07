@@ -11,7 +11,7 @@ const ProductTable = ({ products, fetchProducts, setSelectedProduct }) => {
   };
 
   const handleSave = async (id) => {
-    await axios.put(`/api/products/${id}`, editData);
+    await axios.put(`https://inventory-backend-xiod.onrender.com/api/products/${id}`, editData);
     setEditId(null);
     fetchProducts();
   };
@@ -23,7 +23,7 @@ const ProductTable = ({ products, fetchProducts, setSelectedProduct }) => {
   const handleDelete = async (id, name) => {
     const confirmDelete = window.confirm(`Delete "${name}"?`);
     if (!confirmDelete) return;
-    await axios.delete(`/api/products/${id}`);
+    await axios.delete(`https://inventory-backend-xiod.onrender.com/api/products/${id}`);
     fetchProducts();
   };
 

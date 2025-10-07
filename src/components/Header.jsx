@@ -22,7 +22,7 @@ const Header = ({ fetchProducts }) => {
         if (!search.trim()) {
           await fetchProducts();
         } else {
-          const res = await axios.get(`/api/products?name=${encodeURIComponent(search)}`);
+          const res = await axios.get(`https://inventory-backend-xiod.onrender.com/api/products?name=${encodeURIComponent(search)}`);
           const event = new CustomEvent("filteredProducts", { detail: res.data });
           window.dispatchEvent(event);
         }
@@ -42,7 +42,7 @@ const Header = ({ fetchProducts }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/products", formData);
+      await axios.post("https://inventory-backend-xiod.onrender.com/api/products", formData);
       setShowModal(false);
       setFormData({ name: "", unit: "", category: "", brand: "", stock: "", status: "In Stock", image: "" });
       fetchProducts();

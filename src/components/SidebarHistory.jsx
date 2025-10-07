@@ -9,7 +9,7 @@ const SidebarHistory = ({ product, close }) => {
     if (!productId) return;
     const fetchHistory = async () => {
       try {
-        const res = await axios.get(`/api/products/${productId}/history`);
+        const res = await axios.get(`https://inventory-backend-xiod.onrender.com/api/products/${productId}/history`);
         setHistory(res.data || []);
       } catch (err) {
         console.error("Failed to load history", err);
